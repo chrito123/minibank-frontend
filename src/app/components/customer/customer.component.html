@@ -1,0 +1,31 @@
+@if (customer$ | async; as customer ) {
+  @if (customer.id){
+    <h2>Overview customer</h2>
+    <h2>{{ customer.name }} {{ customer.surname }}</h2>
+    <h3>Accounts:</h3>
+    <ul>
+      @for ( account of customer.accounts; track account.id) {
+      <li>Account ID: {{ account.id }}, Balance: {{ account.balance }}</li>
+
+      <ul>
+        @for ( transaction of account.transactions; track transaction.id) {
+        <li>
+          Amount of the transaction: {{ transaction.amount | number:'1.0-2'}}, Date:
+          {{ transaction.transactionDate | date : "yyyy-MM-dd 'at' HH:mm:ss" }}
+        </li>
+        } @empty {
+        <li>There are no transactions for this account.</li>
+        }
+      </ul>
+
+      } @empty {
+      <li>There are no accounts.</li>
+      }
+    </ul>
+  }
+  @else{
+    <h2>No consumer</h2>
+    }
+} @else{
+<p>Loading customer data...</p>
+}
