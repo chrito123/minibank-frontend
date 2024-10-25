@@ -1,9 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 
 import { HttpClient } from '@angular/common/http';
-import { Customer } from '../models/Customer';
+import { Customer } from '../models/customer-type';
 import { MinibankService } from './minibank.service';
 import { of } from 'rxjs';
+import { AccountType } from '../models/account-type.enum';
 
 describe('MinibankService', () => {
   let service: MinibankService;
@@ -28,6 +29,7 @@ describe('MinibankService', () => {
           id: 101,
           customerId: 1,
           balance: 1500,
+          type: AccountType.CURRENT,
           transactions: [
             {
               id: 1001,

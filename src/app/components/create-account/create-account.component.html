@@ -1,13 +1,14 @@
 <form [formGroup]="createAccountForm" (ngSubmit)="onSubmit()">
 
-  <div>
+  <div class="container">
     <label for="initialCredit">Initial Credit:</label>
     <input id="initialCredit" formControlName="initialCredit" type="number" />
-    @if(createAccountForm.get('initialCredit')?.invalid && createAccountForm.get('initialCredit')?.touched){
-      <p>Initial Credit is required and must be non-negative.</p>
-    }
+    <button type="submit" [disabled]="createAccountForm.invalid">Create New Account</button>
+
 
   </div>
 
-  <button type="submit" [disabled]="createAccountForm.invalid">Create Account</button>
+  @if(createAccountForm.get('initialCredit')?.invalid && createAccountForm.get('initialCredit')?.touched){
+    <p class="warning">Initial Credit is required and must be non-negative.</p>
+  }
 </form>

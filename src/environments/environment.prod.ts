@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  minibankApiUrl: 'http://localhost:8080'
+  minibankApiUrl: 'http://some.prop.url:8080'
 };
