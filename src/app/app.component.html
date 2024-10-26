@@ -1,17 +1,14 @@
-
-
 <main class="main">
   <div class="content">
     <label for="customerId">Enter Customer ID:</label>
     <input type="number" id="customerId" [(ngModel)]="customerId" />
 
     <button type="submit">Fetch Customer Details</button>
-
   </div>
   @if(customerId>0){
-    <app-customer [customerId]="customerId"></app-customer>
-    <app-create-account [customerId]="customerId"></app-create-account>
-  }
+  <app-customer [customerId]="customerId"></app-customer>
+  @if(customerRetrieved){
+  <app-create-account [customerId]="customerId"></app-create-account>}}
 </main>
 
 <router-outlet />
